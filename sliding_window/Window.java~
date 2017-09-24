@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class Window{
+    private Queue<int> buffer;
+    private int windowSize;
+    private int frameCount;
+
+
+    public boolean addFrame(int frameNo){
+        if(this.frameCount>=windowSize){
+            return false;
+        }else{
+            this.frameCount++;
+            return buffer.add(frameNo);
+        }
+    }
+    
+    public int removeFrame(){
+        if (this.frameCount <= 0){
+            return -1;
+        }else{
+            this.frameCount--;
+            return this.buffer.remove();
+        }
+    }
+
+    public Window(int windowSize){
+        this.windowSize = windowSize;
+        this.buffer = new ArrayDeque<>();
+        this.frameCount = 0;
+
+
+    }
+}
